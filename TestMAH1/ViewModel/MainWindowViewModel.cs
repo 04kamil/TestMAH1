@@ -25,8 +25,9 @@ namespace TestMAH1.ViewModel
             }
             set
             {
-                OnPropertyChanged("MainPage");
+               
                 _MainPage = value;
+                OnPropertyChanged("MainPage");
             }
         }
 
@@ -56,6 +57,7 @@ namespace TestMAH1.ViewModel
 
             set
             {
+                OnPropertyChanged("HomePage");
                 _HomePage = value;
             }
         }
@@ -71,6 +73,7 @@ namespace TestMAH1.ViewModel
 
             set
             {
+                //OnPropertyChanged("CreateModel");
                 _CreateModel = value;
             }
         }
@@ -78,6 +81,7 @@ namespace TestMAH1.ViewModel
 
         public MainWindowViewModel()
         {
+            
             ExecuteCommand = new CommandHandler(Execute, () => true);
             HomePage = new CommandHandler(SetHomePage, () => true);
             CreateModel = new CommandHandler(SetCreateModelPage, () => true);
@@ -90,7 +94,10 @@ namespace TestMAH1.ViewModel
 
         public void SetHomePage()
         {
+            
             MainPage = new HomeUserControl();
+           
+            
         }
 
         public void SetCreateModelPage()

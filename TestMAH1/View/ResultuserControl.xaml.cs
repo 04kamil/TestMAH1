@@ -12,20 +12,17 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using TestMAH1.View;
-using MahApps.Metro.Controls;
 
-namespace TestMAH1
+namespace TestMAH1.View
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for ResultuserControl.xaml
     /// </summary>
-    public partial class MainWindow
+    public partial class ResultuserControl : UserControl
     {
-        public MainWindow()
+        public ResultuserControl()
         {
             InitializeComponent();
-            //Con.Content = new MenuUserControl();
         }
     }
 }

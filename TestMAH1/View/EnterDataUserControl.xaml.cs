@@ -12,20 +12,17 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using TestMAH1.View;
-using MahApps.Metro.Controls;
 
-namespace TestMAH1
+namespace TestMAH1.View
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for EnterData.xaml
     /// </summary>
-    public partial class MainWindow
+    public partial class EnterData : UserControl
     {
-        public MainWindow()
+        public EnterData()
         {
             InitializeComponent();
-            //Con.Content = new MenuUserControl();
         }
     }
 }
