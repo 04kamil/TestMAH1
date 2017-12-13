@@ -16,7 +16,7 @@
             <SolidColorBrush Color="White" Opacity="0.9"/>
         </StackPanel.Background>
 
-        <Controls:Tile Width="200" Height="200" Margin="100 10 0 10" Command="{Binding HomePage}">
+        <Controls:Tile Width="200" Height="200" Margin="100 10 0 10" Command="{Binding CreateModel}">
             <Rectangle Width="100" Height="100" Fill="White">
                 <Rectangle.OpacityMask>
                     <VisualBrush Visual="{StaticResource appbar_layer_add}" Stretch="Fill" />

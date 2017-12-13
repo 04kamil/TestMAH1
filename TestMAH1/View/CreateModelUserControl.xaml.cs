@@ -23,6 +23,11 @@ namespace TestMAH1.View
         public CreateModelUserControl()
         {
             InitializeComponent();
+            //gridColor = new SolidColorBrush(Color.FromRgb(65,177,225));
+            //datagrid1.Items.Add("test");
+            
         }
+
+
     }
 }

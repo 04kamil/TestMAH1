@@ -25,7 +25,7 @@ namespace TestMAH1
         public MainWindow()
         {
             InitializeComponent();
-            //Con.Content = new MenuUserControl();
+            Con.Content = new MenuUserControl();
         }
     }
 }

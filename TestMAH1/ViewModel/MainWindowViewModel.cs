@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
@@ -15,7 +16,7 @@ namespace TestMAH1.ViewModel
     class MainWindowViewModel : INotifyPropertyChanged
     {
 
-
+#region Variables
         private UserControl _MainPage;
         public UserControl MainPage
         {
@@ -31,6 +32,91 @@ namespace TestMAH1.ViewModel
             }
         }
 
+        private string _GoalTextBlock;
+        public string GoalTextBlock
+        {
+            get
+            {
+                return _GoalTextBlock;
+            }
+            set
+            {
+                _GoalTextBlock = value;
+                OnPropertyChanged("GoalTextBlock");
+            }
+        }
+
+        private int _CriterionNum;
+        public int CriterionNum
+        {
+            get
+            {
+                return _CriterionNum;
+            }
+            set
+            {
+                _CriterionNum = value;
+                OnPropertyChanged("CriterionNum");
+            }
+        }
+
+        private int _AlternativeNum;
+        public int AlternativeNum
+        {
+            get
+            {
+                return _AlternativeNum;
+            }
+            set
+            {
+                _AlternativeNum = value;
+                OnPropertyChanged("AlternativeNum");
+            }
+        }
+
+        private Visibility _AcceptModel;
+        public Visibility AcceptModel
+        {
+            get
+            {
+                return _AcceptModel;
+            }
+            set
+            {
+                _AcceptModel = value;
+                OnPropertyChanged("AcceptModel");
+            }
+        }
+
+        private ObservableCollection<string> _items;
+        public ObservableCollection<string> Items
+        {
+            get { return _items; }
+            set
+            {
+                _items = value;
+                this.OnPropertyChanged("Items");
+            }
+        }
+
+        private string _myString;
+        public string MyStringProperty
+        {
+            get { return _myString; }
+            set
+            {
+                _myString = value;
+                this.OnPropertyChanged("MyStringProperty");
+            }
+        }
+
+
+
+        public ObservableCollection<string> SomeCollection { get; set; }
+        #endregion
+
+
+        #region Commands
         private ICommand _ExecuteCommand;
         public ICommand ExecuteCommand
         {
@@ -78,13 +164,57 @@ namespace TestMAH1.ViewModel
             }
         }
 
+        private ICommand _EnterDataC;
+        public ICommand EnterDataC
+        {
+            get
+            {
+                return _EnterDataC;
 
+            }
+
+            set
+            {
+                //OnPropertyChanged("CreateModel");
+                _EnterDataC = value;
+            }
+        }
+
+        private ICommand _CreateModelBtn_Click;
+        public ICommand CreateModelBtn_Click
+        {
+            get
+            {
+                return _CreateModelBtn_Click;
+
+            }
+
+            set
+            {
+                //OnPropertyChanged("CreateModel");
+                _CreateModelBtn_Click = value;
+            }
+        }
+
+
+        #endregion
+#region Menu
         public MainWindowViewModel()
         {
-            
+
+            SomeCollection = new ObservableCollection<string>();
+            Items = new ObservableCollection<string>();
+            //MainPage = new MenuUserControl();
+            AcceptModel = Visibility.Hidden;
             ExecuteCommand = new CommandHandler(Execute, () => true);
             HomePage = new CommandHandler(SetHomePage, () => true);
             CreateModel = new CommandHandler(SetCreateModelPage, () => true);
+            EnterDataC = new CommandHandler(SetEnterDataPage, () => true);
+            CreateModelBtn_Click = new CommandHandler(CreateModelMethod, () => true);
+
+
+            //ObservableCollection<TextBlock> Columns{ G }
+
         }
 
         private void Execute()
@@ -95,15 +225,41 @@ namespace TestMAH1.ViewModel
         public void SetHomePage()
         {
             
-            MainPage = new HomeUserControl();
+            MainPage = new MenuUserControl();
            
             
         }
 
         public void SetCreateModelPage()
         {
+            
             MainPage = new CreateModelUserControl();
+            
         }
+
+        public void SetEnterDataPage()
+        {
+
+            MainPage = new EnterData();
+
+        }
+        #endregion
+
+#region Method
+        private void CreateModelMethod()
+        {
+            MessageBox.Show(String.Format("test wartosci to {0}{1}{2}",GoalTextBlock, CriterionNum,AlternativeNum));
+            AcceptModel = Visibility.Visible;
+            SomeCollection.Clear();
+            for(int i=0;i<CriterionNum;i++)
+            {
+                SomeCollection.Add("text: "+i);
+                Items.Add(MyStringProperty);
+            }
+        }
+
+#endregion
+
         #region Property Changed
         public event PropertyChangedEventHandler PropertyChanged;
         protected void OnPropertyChanged(string name)

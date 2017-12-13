@@ -7,7 +7,7 @@
         xmlns:local="clr-namespace:TestMAH1"
         xmlns:ViewModel="clr-namespace:TestMAH1.ViewModel"
         mc:Ignorable="d"
-        Title="MainWindow" Height="760" Width="1024"
+        Title="Analytic Hierarchy Process" Height="760" Width="1024"
         ResizeMode="CanMinimize">
     <DockPanel LastChildFill="True">
         <DockPanel.DataContext>
@@ -18,17 +18,48 @@
         </DockPanel.Background>
         <Menu DockPanel.Dock="Top" HorizontalAlignment="Left" Height="100"  VerticalAlignment="Top" Width="1024" >
             <Menu.Background>
-                <SolidColorBrush Color="SteelBlue" Opacity="0.9"/>
+                <SolidColorBrush Color="White" Opacity="0.8"/>
             </Menu.Background>
-            <Button x:Name="HomeBtn" Command="{Binding HomePage}" Content="Ten Btn" Width="75" Height="75" Margin="10"></Button>
+            <!--<Button x:Name="HomeBtn" Command="{Binding HomePage}" Content="Ten Btn" Width="75" Height="75" Margin="10"></Button>
             <Button x:Name="CreateModel" Command="{Binding CreateModel}" Width="75" Height="75" Margin="10"></Button>
             <Button x:Name="EnterDataBtn" Width="75" Height="75" Margin="10"></Button>
             <Button x:Name="ResultBtn" Width="75" Height="75" Margin="10"></Button>
-            <Button x:Name="SettingsBtn" Width="75" Height="75" Margin="10"></Button>
+            <Button x:Name="SettingsBtn" Width="75" Height="75" Margin="10"></Button>-->
+            <Controls:Tile Width="75" Height="75" Margin="10 10 10 10" Command="{Binding CreateModel}">
+                <Rectangle Width="50" Height="50" Fill="White">
+                    <Rectangle.OpacityMask>
+                        <VisualBrush Visual="{StaticResource appbar_layer_add}" Stretch="Fill"/>
+                    </Rectangle.OpacityMask>
+                </Rectangle>
+            </Controls:Tile>
 
+            <Controls:Tile Width="75" Height="75" Margin="10 10 10 10" Command="{Binding EnterDataC}">
+                <Rectangle Width="50" Height="50" Fill="White">
+                    <Rectangle.OpacityMask>
+                        <VisualBrush Visual="{StaticResource appbar_database}" Stretch="Fill" />
+                    </Rectangle.OpacityMask>
+                </Rectangle>
+            </Controls:Tile>
+
+            <Controls:Tile Width="75" Height="75" Margin="10 10 10 10">
+                <Rectangle Width="50" Height="50" Fill="White">
+                    <Rectangle.OpacityMask>
+                        <VisualBrush Visual="{StaticResource appbar_graph_bar}" Stretch="Fill" />
+                    </Rectangle.OpacityMask>
+                </Rectangle>
+            </Controls:Tile>
+
+            <Controls:Tile Width="75" Height="75" Margin="10 10 10 10">
+                <Rectangle Width="50" Height="50" Fill="White">
+                    <Rectangle.OpacityMask>
+                        <VisualBrush Visual="{StaticResource appbar_settings}" Stretch="Fill" />
+                    </Rectangle.OpacityMask>
+                </Rectangle>
+            </Controls:Tile>
         </Menu>
-        <Menu DockPanel.Dock="Bottom" HorizontalAlignment="Right" Height="25"  VerticalAlignment="Top" Width="1024" Background="SteelBlue" >
-            <TextBlock Foreground="White" TextAlignment="Right" Height="25" Width="1014" >Created by Kamil Brozek</TextBlock>
+        <Menu x:Name="menu" DockPanel.Dock="Bottom" HorizontalAlignment="Right" Height="30"  VerticalAlignment="Top" Width="1024" >
+            <TextBlock Foreground="Black" TextAlignment="Right" Height="25" Width="1000" Margin="0 0 0 0" Text="">
+                Created by Kamil Brozek</TextBlock>
         </Menu>
         <ContentControl x:Name="Con" DockPanel.Dock="Top" Content="{Binding Path=MainPage,Mode=TwoWay}" Width="1024"/>
     </DockPanel>
